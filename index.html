@@ -6,7 +6,7 @@
 <title>MCP and Enterprise AI Integration | Sails Software</title>
 <meta name="description" content="MCP shifts AI integration from custom plumbing to open protocol. See how Sails built an MCP Server over Java apps and what it means for enterprise AI in 2026.">
 <meta name="keywords" content="Model Context Protocol, MCP enterprise AI, AI integration architecture, MCP Server Java, LLM enterprise integration, AI backend connectivity, MCP security, generative AI enterprise 2026">
-<meta name="author" content="Kiran Kumar AVK">
+<meta name="author" content="Sails Software Inc.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.sailssoftware.com/blog/mcp-enterprise-ai-integration">
 <meta property="og:type" content="article">
@@ -42,15 +42,9 @@
   "wordCount": 2800,
   "inLanguage": "en-US",
   "author": {
-    "@type": "Person",
-    "name": "Kiran Kumar AVK",
-    "jobTitle": "Sails Software Inc.",
-    "sameAs": ["https://www.linkedin.com/in/kiran-kumar-avk"],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Sails Software Inc.",
-      "url": "https://www.sailssoftware.com"
-    }
+    "@type": "Organization",
+    "name": "Sails Software Inc.",
+    "url": "https://www.sailssoftware.com"
   },
   "publisher": {
     "@type": "Organization",
@@ -143,15 +137,13 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Kiran Kumar AVK",
-  "jobTitle": "Sails Software Inc.",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Sails Software Inc.",
-    "url": "https://www.sailssoftware.com"
-  },
-  "sameAs": ["https://www.linkedin.com/in/kiran-kumar-avk"]
+  "@type": "Organization",
+  "name": "Sails Software Inc.",
+  "url": "https://www.sailssoftware.com",
+  "sameAs": [
+    "https://www.linkedin.com/company/sails-software",
+    "https://twitter.com/SailsSoftware"
+  ]
 }
 </script>
 
@@ -551,22 +543,25 @@
 
   .primitive-card:hover::after { opacity: 1; }
 
-  .prim-icon {
-    width: 44px; height: 44px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 18px;
-    font-size: 20px;
+  .primitive-card {
+    display: flex;
+    flex-direction: column;
   }
 
-  .prim-icon.resources { background: rgba(0,185,255,0.12); }
-  .prim-icon.tools { background: rgba(12,141,198,0.15); }
-  .prim-icon.prompts { background: rgba(6,74,112,0.35); }
+  .prim-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
 
-  .primitive-card h3 { font-size: 1.05rem; margin: 0 0 8px; }
-  .primitive-card p { font-size: 13.5px; color: var(--text-muted); margin: 0 0 14px; line-height: 1.6; }
+  .prim-heading svg { flex-shrink: 0; }
+
+  .primitive-card h3 { font-size: 1.05rem; margin: 0; color: var(--text-white); font-weight: 600; }
+  .primitive-card p { font-size: 13.5px; color: var(--text-muted); margin: 0 0 14px; line-height: 1.6; flex: 1; }
 
   .prim-example {
+    margin-top: auto;
     font-size: 12.5px;
     color: var(--cyan);
     background: rgba(0,185,255,0.07);
@@ -779,6 +774,115 @@
     .bg-alt-wrap { padding: 44px 16px; }
     .table-wrap { margin: 24px -16px; border-radius: 0; border-left: none; border-right: none; }
   }
+
+  /* ── AI SUMMARY BUTTON ── */
+  .ai-summary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(0,185,255,0.12), rgba(12,141,198,0.08));
+    border: 1px solid rgba(0,185,255,0.30);
+    color: var(--cyan);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .ai-summary-btn:hover {
+    background: rgba(0,185,255,0.18);
+    border-color: var(--cyan);
+    transform: translateY(-1px);
+  }
+  .ai-summary-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ── AI SUMMARY PANEL ── */
+  .ai-summary-panel {
+    max-width: 680px;
+    margin: 28px auto 0;
+    animation: fadeSlideIn 0.35s ease;
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .ai-summary-inner {
+    background: linear-gradient(135deg, rgba(6,74,112,0.4), rgba(12,141,198,0.12));
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    text-align: left;
+    position: relative;
+  }
+  .ai-summary-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .ai-summary-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ai-summary-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .ai-summary-close:hover { color: var(--text-white); }
+  .ai-summary-content {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+  .ai-summary-content p { margin: 0 0 10px; color: var(--text-body); font-size: 14px; }
+  .ai-summary-content p:last-child { margin: 0; }
+
+  /* Loading dots */
+  .ai-loading {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+  }
+  .ai-loading-text {
+    margin-left: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .ai-dot {
+    width: 7px; height: 7px;
+    background: var(--cyan);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+    animation: dotPulse 1.4s ease-in-out infinite;
+  }
+  .ai-dot:nth-child(2) { animation-delay: 0.2s; }
+  .ai-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dotPulse {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
 </style>
 </head>
 <body>
@@ -791,14 +895,6 @@
   <h1 class="hero-headline">How <span>MCP</span> Is Changing the AI Landscape — and What It Means for Enterprise Software</h1>
   <p class="hero-sub">We built a Model Context Protocol Server over Java enterprise applications. What we discovered isn't just a simpler integration path — it's a fundamental shift in where AI complexity lives.</p>
   <div class="hero-meta">
-    <div class="hero-author">
-      <div class="author-avatar">KK</div>
-      <div class="author-info">
-        <div class="author-name">Kiran Kumar AVK</div>
-        <div class="author-title">Sails Software Inc.</div>
-      </div>
-    </div>
-    <div class="meta-divider"></div>
     <div class="meta-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       <time datetime="2026-06-23">June 23, 2026</time>
@@ -807,6 +903,31 @@
     <div class="meta-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
       11 min read
+    </div>
+    <div class="meta-divider"></div>
+    <button id="ai-summary-btn" class="ai-summary-btn" onclick="generateSummary()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      AI Summary
+    </button>
+  </div>
+
+  <div id="ai-summary-panel" class="ai-summary-panel" style="display:none;">
+    <div class="ai-summary-inner">
+      <div class="ai-summary-header">
+        <span class="ai-summary-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B9FF" stroke-width="2" style="margin-right:6px;vertical-align:middle;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          AI-Generated Summary
+        </span>
+        <button class="ai-summary-close" onclick="closeSummary()" aria-label="Close summary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="ai-summary-content" class="ai-summary-content">
+        <div class="ai-loading">
+          <span class="ai-dot"></span><span class="ai-dot"></span><span class="ai-dot"></span>
+          <span class="ai-loading-text">Generating summary&#8230;</span>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -877,20 +998,26 @@
 
         <div class="primitives-grid">
           <div class="primitive-card reveal">
-            <div class="prim-icon resources">📂</div>
-            <h3>Resources</h3>
+            <div class="prim-heading">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B9FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+              <h3>Resources</h3>
+            </div>
             <p>Read-only data access. Fetch state, logs, schemas, or records from backend systems without granting write permissions.</p>
             <div class="prim-example">"Fetch the last two hours of error logs from the payment microservice."</div>
           </div>
           <div class="primitive-card reveal">
-            <div class="prim-icon tools">⚙️</div>
-            <h3>Tools</h3>
+            <div class="prim-heading">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B9FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              <h3>Tools</h3>
+            </div>
             <p>Executable backend actions. Trigger jobs, restart services, or modify state — with full access control intact.</p>
             <div class="prim-example">"Restart the stuck processing queue in the verification pipeline."</div>
           </div>
           <div class="primitive-card reveal">
-            <div class="prim-icon prompts">💬</div>
-            <h3>Prompts</h3>
+            <div class="prim-heading">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B9FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <h3>Prompts</h3>
+            </div>
             <p>Pre-defined interaction templates. Context-aware workflow shortcuts that remove manual prompt engineering from recurring tasks.</p>
             <div class="prim-example">"Run the standard debugging workflow with live telemetry context attached."</div>
           </div>
@@ -1152,6 +1279,80 @@ const revealObserver = new IntersectionObserver(function(entries) {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 reveals.forEach(function(el) { revealObserver.observe(el); });
+
+// ── AI SUMMARY ──
+const BLOG_TEXT = `
+How MCP Is Changing the AI Landscape — and What It Means for Enterprise Software
+
+The Model Context Protocol (MCP) is an open standard that gives AI models a secure, structured way to connect with enterprise backend systems. Every time an engineering team wants to connect an LLM to a real application, they build from scratch. This doesn't scale, creates security blind spots with hardcoded keys distributed across environments, and is fundamentally fragile — when an underlying API changes, the LLM hallucinate rather than surface a clear failure.
+
+MCP introduces three core primitives: Resources (read-only data access), Tools (executable backend actions), and Prompts (pre-defined workflow templates). It separates the MCP Client (the AI orchestration layer) from the MCP Server (a lightweight proxy over your data stores and microservices that acts as both a capability registry and a security perimeter).
+
+During initialization, MCP enforces a Capability Negotiation phase — both sides declare protocol versions and the server explicitly declares available capabilities. The LLM cannot invoke something outside the negotiated payload, eliminating hallucinated invocations at the architectural level. MCP also uses JSON-RPC 2.0 framing so errors surface as clean, structured messages rather than raw stack traces fed back to the model.
+
+In practice, Sails wrapped Java enterprise apps: exposing log streams and metrics as Resources, mapping backend operations like queue restarts and batch jobs as Tools, and creating debugging workflow Prompt templates. Tasks that required navigating multiple internal dashboards now complete through a single natural language interface with full access controls intact.
+
+Three operational realities to address before building: (1) Governance and security boundaries are mandatory — validate all inputs, enforce RBAC, never assume the model sends expected parameters; (2) Metadata descriptions are production code, not documentation — vague tool descriptions cause misinterpretation; (3) Transport architecture matters — use stdio for local tools, SSE for remote services, and plan for network latency in complex Java backends.
+
+The core insight: when your backend exposes an MCP Server, you are building an open standard endpoint, not a tool for one specific AI model. Any future AI client that supports MCP inherits the ability to interact with your systems without re-engineering the integration. The integration burden moves from the AI client (which changes constantly) to the backend server (which you control).
+`;
+
+async function generateSummary() {
+  const btn = document.getElementById('ai-summary-btn');
+  const panel = document.getElementById('ai-summary-panel');
+  const content = document.getElementById('ai-summary-content');
+
+  btn.disabled = true;
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg> Generating…';
+
+  // Add spin keyframe if not already there
+  if (!document.getElementById('spin-style')) {
+    const s = document.createElement('style');
+    s.id = 'spin-style';
+    s.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+    document.head.appendChild(s);
+  }
+
+  panel.style.display = 'block';
+  content.innerHTML = '<div class="ai-loading"><span class="ai-dot"></span><span class="ai-dot"></span><span class="ai-dot"></span><span class="ai-loading-text">Generating summary&#8230;</span></div>';
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: 'You are a concise technical summarizer. Return only a 3-sentence summary — no preamble, no labels, no markdown. Plain prose only. Sentence 1: the core problem MCP solves. Sentence 2: how MCP works architecturally. Sentence 3: the key business implication for enterprise teams.',
+        messages: [{ role: 'user', content: 'Summarize this article in exactly 3 sentences:\n\n' + BLOG_TEXT }]
+      })
+    });
+
+    const data = await response.json();
+    const text = data.content && data.content[0] && data.content[0].text
+      ? data.content[0].text.trim()
+      : 'Summary unavailable. Please try again.';
+
+    // Split into sentences for paragraph formatting
+    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+    content.innerHTML = sentences.map(s => '<p>' + s.trim() + '</p>').join('');
+
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> AI Summary';
+    btn.disabled = false;
+
+  } catch (err) {
+    content.innerHTML = '<p style="color:var(--text-muted);">Could not generate summary — please try again.</p>';
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> AI Summary';
+    btn.disabled = false;
+  }
+}
+
+function closeSummary() {
+  document.getElementById('ai-summary-panel').style.display = 'none';
+  const btn = document.getElementById('ai-summary-btn');
+  btn.disabled = false;
+}
+
 </script>
 
 </body>
